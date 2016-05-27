@@ -1,0 +1,36 @@
+  /**
+   * Native Anwendungsentwicklung mit SAP HANA
+   *
+   * JavaScript-Datei zur Abfrage der Wetterdaten
+   *
+   * $Autor: Stefan Kühnlein, Holger Seubert
+   * $Version: 1.0
+  */
+  
+  //Diese Datei kann in einer Trail-Instance nicht ausgeführt werden
+  //Diese Datei muss im Verzeichnis <<account>>.<<rootpackage>>.weather.service gespeichert werden
+  
+  var smtpConnection = new $.net.SMTPConnection();
+var mail = new $.net.Mail({
+  sender: {
+    address: "Nik.Name@web.de"
+  },
+  to: [{
+    name: "JavaScript Developer",
+    address: "JavaScript.Devloper@native-xs.com",
+    nameEncoding: "US-ASCII"
+}],
+  subject: "Hitzewarnung",
+  subjectEncoding: "UTF-8",
+  parts: [new $.net.Mail.Part({
+    type: $.net.Mail.Part.TYPE_TEXT,
+    text: "Die aktuell gemessenen Temperaturen haben die 32-Grad-Marke überschritten",
+    contentType: "text/plain",
+    encoding: "UTF-8"
+  })]
+});
+var result = smtpConnection.send(mail);
+var response = "MessageId = " + result.messageId + ", final reply =" + result.finalReply;
+$.response.status = $.net.http.OK;
+$.response.contentType = "text";
+$.response.setBody(response);

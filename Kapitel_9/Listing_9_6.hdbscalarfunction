@@ -1,0 +1,26 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition einer SQLScript Funktion
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.functions 
+// unter dem Namen get_station_details.hdbprocedure gespeichert werden
+// Ersetzten Sie <<yourDBSchema>> in der SAP HCP Trial Umgebung mit _SYS_BIC
+
+FUNCTION "<<yourDBSchema>>"."<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.functions::value_shift" ( 
+	in_value decimal(5,2),
+	in_shift_value decimal(5,2)) 
+	RETURNS result decimal(5,2)
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER AS
+BEGIN
+/***************************** 
+	Write your function logic
+ *****************************/
+ result := in_value - ( :in_value * :in_shift_value );
+END;
+

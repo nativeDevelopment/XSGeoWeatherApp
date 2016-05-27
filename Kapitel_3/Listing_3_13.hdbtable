@@ -1,0 +1,29 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition des SAP HANA Datenmodells mit der HDBTable Syntax
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.hdb 
+// unter dem Namen data.hdbtable gespeichert werden
+
+table.schemaName = "<yourDBSchema>"; // in der HCP Trial Landscape '_SYS_BIC'
+table.tableType = COLUMNSTORE;
+
+table.columns =
+[
+{name = "Id";  sqlType = INTEGER;  nullable=false; },
+{name = "CityId";  sqlType = INTEGER;  nullable=false; },
+{name = "Temperature"; sqlType = DECIMAL ; nullable=true;},
+{name = "Pressure"; sqlType = INTEGER ; nullable=true;},
+{name = "Humidity"; sqlType = INTEGER ; nullable=true;},
+{name = "WindDegree"; sqlType = DECIMAL ; nullable=true;},
+{name = "WindSpeed";  sqlType = DECIMAL; nullable=true;},
+{name = "Rain";  sqlType = INTEGER; nullable=true;},
+{name = "Clouds";  sqlType = INTEGER; nullable=true;},
+{name = "Time";  sqlType = INTEGER;  nullable=false; }
+]; 
+table.primaryKey.pkcolumns = ["Id"];

@@ -1,0 +1,80 @@
+<mvc:View xmlns:mvc="sap.ui.core.mvc" xmlns="sap.m" xmlns:vbm="sap.ui.vbm" xmlns:ux="sap.uxap" xmlns:layout="sap.ui.layout"
+	controllerName="native.xs.weather.controller.GeoStationInfo" xmlns:sap.ui.core="sap.ui.core">
+	<ux:ObjectPageLayout>
+		<ux:headerTitle>
+			<ux:ObjectPageHeader objectTitle="Wetterstationen der Stadt {path:'Weathermodel>Name'}"></ux:ObjectPageHeader>
+		</ux:headerTitle>
+		<ux:headerContent>
+			
+			<layout:VerticalLayout>
+				<layout:layoutData>
+					<ux:ObjectPageHeaderLayoutData visibleS="false"/>
+				</layout:layoutData>
+				<ObjectStatus title="Koordinaten der Stadt" text="{Weathermodel>Latitude} {Weathermodel>Latitude}"/>
+				<ObjectStatus title="Temparatur" text="{Weathermodel>Temperature} °C"/>
+				<ObjectStatus title="Luftdruck" text="{Weathermodel>Pressure} pha"/>
+			</layout:VerticalLayout>
+			<!--
+			<ObjectAttribute text="Koordinaten der Stadt {path:'Weathermodel>',formatter:'.getPosition'}"/>
+			<Label text="Temparatur"/>
+			<ObjectNumber number="{Temperature}" numberUnit="°C"/>
+			<Label text="Temparatur"/>
+			<ObjectNumber number="{Pressure}" numberUnit="ppa"/>
+			-->
+		</ux:headerContent>
+		<ux:sections>
+			<ux:ObjectPageSection title="Karte">
+				<ux:subSections>
+					<ux:ObjectPageSubSection title="Karte">
+						<ux:blocks>
+							<vbm:GeoMap id="map" width="500px" height="300px" initialPosition="{path:'Weathermodel>',formatter:'.getPosition'}" initialZoom="8">
+								<vbm:vos>
+									<vbm:Spots items="{Weathermodel>stations}">
+										<vbm:items>
+											<vbm:Spot id="Spot" position="{path:'Weathermodel>',formatter:'.getPosition'}"></vbm:Spot>
+										</vbm:items>
+									</vbm:Spots>
+								</vbm:vos>
+							</vbm:GeoMap>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+			<ux:ObjectPageSection title="Tabelle">
+				<ux:subSections>
+					<ux:ObjectPageSubSection title="Tabelle">
+						<ux:blocks>
+							<Table items="{path:'Weathermodel>stations'}" title="Wetterstationen" selectionMode="MultiToggle" visibleRowCount="7">
+								<columns>
+									<Column><Text text="Name"/></Column>
+									<Column><Text text="Latitude"/></Column>
+									<Column><Text text="Longitude"/></Column>
+								</columns>
+								<items>
+									<ColumnListItem>
+										<cells>
+											<Text text="{Weathermodel>Name}"/>
+											<Text text="{Weathermodel>Latitude}"/>
+											<Text text="{Weathermodel>Longitude}"/>
+										</cells>
+									</ColumnListItem>
+								</items>
+							</Table>
+						</ux:blocks>
+					</ux:ObjectPageSubSection>
+				</ux:subSections>
+			</ux:ObjectPageSection>
+		</ux:sections>
+	</ux:ObjectPageLayout>
+	<!--
+			<Page>
+						<ObjectHeader title="Wetterstation der Stadt {path:'Weathermodel>Name'}">
+					<attributes>
+						<ObjectAttribute text="Position {path:'Weathermodel>',formatter:'.getPosition'}"/>
+					</attributes>
+				</ObjectHeader>
+		
+		
+
+	</Page> -->
+</mvc:View>

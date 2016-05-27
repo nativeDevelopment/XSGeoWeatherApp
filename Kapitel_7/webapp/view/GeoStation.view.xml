@@ -1,0 +1,23 @@
+<mvc:View controllerName="native.xs.weather.controller.GeoStation" 
+  xmlns:mvc="sap.ui.core.mvc" 
+  xmlns:sap.ui.core="sap.ui.core" xmlns="sap.m">
+
+  <Page title="{i18n&gt;title}">
+    <content>
+    <List id="idList" items="{Weathermodel>/Weatherdata}">
+      <ObjectListItem activeIcon="sap-icon://world" 
+        number="{Weathermodel>Temparatur}" 
+        numberUnit="°C" press="onSelectionChange"
+        title="{Weathermodel>Name}" type="Navigation">
+      <attributes>
+        <ObjectAttribute text="{Weathermodel>Latitude}" 
+          title="Latitude"/>
+        <ObjectAttribute text="{Weathermodel>Longitude}" 
+          title="Longitude"/>
+      </attributes>
+      </ObjectListItem>
+    </List>
+    </content>
+  </Page>
+
+</mvc:View>

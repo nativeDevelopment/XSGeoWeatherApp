@@ -1,0 +1,20 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition einer einfachen Assoziation
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.odata gespeichert werden
+
+service {
+  "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.hdb::station" as "Weatherstation" ;
+  "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.hdb::address" as "Address" ;
+  association "Station_Address"
+  principal "Weatherstation"("AddressId")
+  multiplicity "1"
+  dependent "Address"("Id")
+  multiplicity "1";
+}

@@ -1,0 +1,29 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Table Import für Wetterstationsdaten
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.data 
+// unter dem Namen station.hdbti gespeichert werden
+
+// To define a table import from a CSV file to a table you can use the following code.
+// In the example the CSV files should exist in sample.test package 
+// The number of table columns and their types must match the number of CSV columns and their types. 
+
+import = 
+        [
+            {
+                // Target CDS table
+                cdstable = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds::weather.station";			
+                // Source CSV file
+                file = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.data.load:Station.csv";          		
+                // CSV file does include a header first line
+                header = true;                           											
+                // CSV data value delimiter, default is ","
+                delimField = ";";                         											
+            }
+         ];   

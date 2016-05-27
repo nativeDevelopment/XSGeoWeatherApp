@@ -1,0 +1,41 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Table Import für Messdaten
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.data 
+// unter dem Namen values.hdbti gespeichert werden
+
+// To define a table import from a CSV file to a table you can use the following code.
+// In the example the CSV files should exist in sample.test package 
+// The number of table columns and their types must match the number of CSV columns and their types. 
+
+import = 
+        [
+            //Klimadaten Q1 2015
+            // BB,BE,BW,HE,BY
+            {
+                cdstable = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds::weather.sensor.rainfall";		// Target CDS table
+                file = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.data.load:Q1_Rainfall.csv";          	// Source CSV file
+                header = true;                          	 			// CSV file does not include a header first line
+                delimField = ";";                         				// CSV data value delimiter, default is ","
+            },
+            
+            {
+                cdstable = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds::weather.sensor.wind";			// Target CDS table
+                file = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.data.load:Q1_Wind.csv";          		// Source CSV file
+                header = true;                          	 			// CSV file does not include a header first line
+                delimField = ";";                         				// CSV data value delimiter, default is ","
+            },
+            
+            {
+                cdstable = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds::weather.sensor.tempr";			// Target CDS table
+                file = "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.data.load:Q1_Temperature.csv";          // Source CSV file
+                header = true;                          	 			// CSV file does not include a header first line
+                delimField = ";";                         				// CSV data value delimiter, default is ","
+            }
+         ];

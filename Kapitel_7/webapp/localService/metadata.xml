@@ -1,0 +1,44 @@
+<edmx:Edmx xmlns:edmx="http://schemas.microsoft.com/ado/2007/06/edmx" Version="1.0">
+	<edmx:DataServices xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" m:DataServiceVersion="2.0">
+		<Schema xmlns:d="http://schemas.microsoft.com/ado/2007/08/dataservices"
+			xmlns:m="http://schemas.microsoft.com/ado/2007/08/dataservices/metadata" xmlns="http://schemas.microsoft.com/ado/2008/09/edm"
+			Namespace="p1941740427trial.native.xs.weather.odata.weatherdata">
+			<EntityType Name="WeatherdataType">
+				<Key>
+					<PropertyRef Name="CityId"/>
+				</Key>
+				<Property Name="CityId" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50"/>
+				<Property Name="Latitude" Type="Edm.Double" Nullable="false"/>
+				<Property Name="Longitude" Type="Edm.Double" Nullable="false"/>
+				<Property Name="Temperature" Type="Edm.Decimal" Precision="34"/>
+				<Property Name="Pressure" Type="Edm.Int32"/>
+				<NavigationProperty Name="stations" Relationship="p1941740427trial.native.xs.weather.odata.weatherdata.City_WeatherstationType"
+					FromRole="WeatherdataPrincipal" ToRole="WeatherstationDependent"/>
+			</EntityType>
+			<EntityType Name="WeatherstationType">
+				<Key>
+					<PropertyRef Name="StationId"/>
+				</Key>
+				<Property Name="StationId" Type="Edm.Int32" Nullable="false"/>
+				<Property Name="CityId" Type="Edm.Double" Nullable="false"/>
+				<Property Name="Name" Type="Edm.String" Nullable="false" MaxLength="50"/>
+				<Property Name="Latitude" Type="Edm.Double" Nullable="false"/>
+				<Property Name="Longitude" Type="Edm.Double" Nullable="false"/>
+				<Property Name="AddressId" Type="Edm.Int32"/>
+			</EntityType>
+			<Association Name="City_WeatherstationType">
+				<End Type="p1941740427trial.native.xs.weather.odata.weatherdata.WeatherdataType" Role="WeatherdataPrincipal" Multiplicity="1"/>
+				<End Type="p1941740427trial.native.xs.weather.odata.weatherdata.WeatherstationType" Role="WeatherstationDependent" Multiplicity="*"/>
+			</Association>
+			<EntityContainer Name="weatherdata" m:IsDefaultEntityContainer="true">
+				<EntitySet Name="Weatherdata" EntityType="p1941740427trial.native.xs.weather.odata.weatherdata.WeatherdataType"/>
+				<EntitySet Name="Weatherstation" EntityType="p1941740427trial.native.xs.weather.odata.weatherdata.WeatherstationType"/>
+				<AssociationSet Name="City_Weatherstation" Association="p1941740427trial.native.xs.weather.odata.weatherdata.City_WeatherstationType">
+					<End Role="WeatherdataPrincipal" EntitySet="Weatherdata"/>
+					<End Role="WeatherstationDependent" EntitySet="Weatherstation"/>
+				</AssociationSet>
+			</EntityContainer>
+		</Schema>
+	</edmx:DataServices>
+</edmx:Edmx>

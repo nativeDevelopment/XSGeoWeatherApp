@@ -1,0 +1,85 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition des SAP HANA Datenmodells mit Core Data Services (CDS)
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds 
+// unter dem Namen weather.hdbdd gespeichert werden
+
+
+namespace <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds;
+
+@Schema: '<<yourDBSchema>>' // in der HCP Trial Landscape '_SYS_BIC'
+context weather {
+
+    type Key : Integer;
+	type UnitT: String(8);
+
+
+    @Catalog.tableType : #COLUMN 
+    Entity address {
+        key  AddressID: Key;
+        City: String(30);
+        Zip: Integer;
+        Street: String(50);
+        Country: String(30);
+        Region: String(50);       
+    };
+    
+    
+    @Catalog.tableType : #COLUMN 
+    Entity station {
+        key  StationID: Key;        
+        Address: association[1] to weather.address not null;
+        Latitude: Double;
+        Longitude: Double; 
+        Height: Integer;
+        Name: String(5000);
+        Network: String(20);   
+    };
+    
+    context sensor {
+    
+    	@Catalog.tableType : #COLUMN
+    	@nokey    	
+    	Entity tempr {
+    		Station: association to weather.station not null;
+    		Date: UTCTimestamp not null;
+    		Value: Decimal (5,2) not null;
+    		Unit: UnitT not null;    	
+    	};
+    
+    	@Catalog.tableType: #COLUMN
+    	@nokey    	 
+    	Entity wind {
+    		Station: association[1] to weather.station not null;
+    		Date: UTCTimestamp not null;
+    		Value: Decimal (5,2) not null;
+    		Unit: UnitT not null;
+    	};
+    	
+    	@Catalog.tableType: #COLUMN    	
+    	@nokey
+    	Entity rainfall {
+    		Station: association[1] to weather.station not null;
+    		Date: UTCTimestamp not null;
+    		Value: Decimal (5,2) not null;
+    		Unit: UnitT not null;
+    	};
+    	
+    	view tempDetails as 
+		select from tempr
+		{
+   			max("Value") as maxTemp,
+   			min("Value") as minValue,
+   			avg("Value") as avgValue
+ 		};
+
+    	
+    };   
+    
+};

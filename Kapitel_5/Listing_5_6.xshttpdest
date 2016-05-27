@@ -1,0 +1,13 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Erweiterung der XS-Destination
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.service unter dem Namen openWeatherMapAPI.xshttpdest gespeichert werden
+
+modifies <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.service:openWeatherMapAPI.xshttpdest;
+pathPrefix = "/data/2.5/station";

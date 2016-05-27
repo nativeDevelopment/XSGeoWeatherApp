@@ -1,0 +1,36 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition einer SQLScript Prozedur
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.procedures 
+// unter dem Namen get_station_details.hdbprocedure gespeichert werden
+// Ersetzten Sie <<yourDBSchema>> in der SAP HCP Trial Umgebung mit _SYS_BIC
+
+PROCEDURE "<<yourDBSchema>>"."<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.procedures::get_station_details" (
+	IN station_id INTEGER,
+	OUT station_details TABLE(
+		"Name"		NVARCHAR(5000),
+		"City"		NVARCHAR(30),
+		"Zip"		INTEGER,
+		"Street"	NVARCHAR(50)
+		)
+	 ) 
+	LANGUAGE SQLSCRIPT
+	SQL SECURITY INVOKER 
+	--DEFAULT SCHEMA <default_schema_name>
+	READS SQL DATA AS
+BEGIN
+/***************************** 
+	Write your procedure logic 
+ *****************************/
+ station_details = SELECT station."Name", address."City", address."Zip", address."Street"
+ 					FROM "<<yourDBSchema>>"."<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds::weather.address" AS address,
+ 						 "<<yourDBSchema>>"."<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds::weather.station" AS station
+ 					WHERE station."Address.AddressID" = address."AddressID" AND station."StationID" = :station_id;
+END;
+

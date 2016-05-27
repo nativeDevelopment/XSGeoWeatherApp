@@ -1,0 +1,16 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * OData-Service-Definition mit expliziter Angabe von Attributen
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.odata gespeichert werden
+
+service {
+  "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.hdb::station" as "Wetterstation"
+  with ("StationId","Name");
+
+}

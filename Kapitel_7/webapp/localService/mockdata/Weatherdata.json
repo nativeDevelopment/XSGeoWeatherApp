@@ -1,0 +1,28 @@
+[{
+	"CityId": 6940463,
+	"Name": "München",
+	"Latitude": "48.137001",
+	"Longitude": "11.57521",
+	"Temperature": "1.8",
+	"Pressure": "1028",
+	"stations": {"__deferred":
+		{"uri":"/s11hanaxs.hanatrial.ondemand.com/p1941740427trial/native/xs/weather/odata/weatherdata.xsodata/Weatherdata(6940463)/stations"}}
+},{
+	"CityId": 2950159,
+	"Name": "Berlin",
+	"Latitude": "52.524368",
+	"Longitude": "13.41053",
+	"Temperature": "0.9",
+	"Pressure": "1024",
+	"stations": {"__deferred":
+		{"uri":"/s11hanaxs.hanatrial.ondemand.com/p1941740427trial/native/xs/weather/odata/weatherdata.xsodata/Weatherdata(2950159)/stations"}}
+},{
+	"CityId": 2886242,
+	"Name": "Köln",
+	"Latitude": "50.933331",
+	"Longitude": "6.95",
+	"Temperature": "5.2",
+	"Pressure": "983.34",
+	"stations": {"__deferred":
+		{"uri":"/s11hanaxs.hanatrial.ondemand.com/p1941740427trial/native/xs/weather/odata/weatherdata.xsodata/Weatherdata(2886242)/stations"}}
+}]

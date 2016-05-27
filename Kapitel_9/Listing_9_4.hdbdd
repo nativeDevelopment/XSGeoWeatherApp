@@ -1,0 +1,25 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition des SAP HANA Datenmodells mit Core Data Services (CDS)
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds 
+// unter dem Namen weather.hdbdd gespeichert werden
+
+namespace <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds;
+
+@Schema: '<<yourDBSchema>>'
+context GlobalTypes {
+
+    type tt_station_details {
+    	"Name":		String(5000);
+    	"City":		String(30);
+    	"Zip":		Integer;
+    	"Street":	String(50);
+    };
+
+};

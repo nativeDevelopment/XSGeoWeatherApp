@@ -1,0 +1,14 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * OData-Service zum Zugriff auf das Repository-Objekt STATION
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.odata gespeichert werden
+
+service {  
+"<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.hdb::station" as "Wetterstation";
+}

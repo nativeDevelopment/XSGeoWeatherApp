@@ -1,0 +1,24 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * XS-Destination für die Abfrage von Wetterdaten
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.service unter dem Namen openWeatherMapAPI.xshttpdest gespeichert werden
+
+modifies <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.service:openWeatherMapAPI.xshttpdest;
+proxyType = http;
+proxyHost = "proxy"; 
+description = "Wetteranalyse mit der OpenWeatherMap-API";
+host = "api.openweathermap.org";
+port = 80;
+useSSL = false;
+pathPrefix = "/data/2.5/weather";
+authType = none;
+useProxy = true;
+proxyHost = "proxy-trial";
+proxyPort = 8080;
+timeout = 0;

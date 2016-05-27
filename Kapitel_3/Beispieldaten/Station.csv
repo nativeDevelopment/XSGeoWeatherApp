@@ -1,0 +1,7 @@
+ID;AddressID;Latitude;Longitude;Height;Name;Network
+100;10;49.881;8.678;162;Darmstadt II;MeteoGroup
+200;20;54.641;10.0238;0;Schönhagen (Ostseebad);MeteoGroup
+300;30;52.4675;13.4021;48;Berlin-Tempelhof;MeteoGroup
+400;40;48.8282;9.2;314;Stuttgart (Schnarrenberg);MeteoGroup
+500;50;48.4025;11.6946;477;Weihenstephan-Dürnast;
+

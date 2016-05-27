@@ -1,0 +1,25 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * JavaScript-Datei zur Abfrage der Wetterdaten
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei kann in einer Trail-Instance nicht ausgeführt werden
+//Diese Datei muss im Verzeichnis <<account>>.<<rootpackage>>.weather.service gespeichert werden
+ 
+{
+  "description": "Ermittlung der aktuellen Wetterdaten",
+  "action": "<<rootpackage>>.weather.service:getWeatherData.xsjs::getWeatherData",
+  "schedules": [
+    {
+      "description": "Aktuelle Wetterdaten von München",
+      "xscron": "* * * * */4 * 2",
+      "parameter": {
+        "CityId": "258745"
+      }
+    }
+  ]
+}

@@ -1,0 +1,116 @@
+{
+	"_version": "1.1.0",
+	"sap.app": {
+		"_version": "1.1.0",
+		"id": "native.xs.weather",
+		"type": "application",
+		"i18n": "i18n/i18n.properties",
+		"title": "{{appTitle}}",
+		"description": "{{appDescription}}",
+		"applicationVersion": {
+			"version": "1.0.0"
+		},
+		"sourceTemplate": {
+			"id": "ui5template.basicSAPUI5ApplicationProject",
+			"version": "1.30.3"
+		},
+		"dataSources": {
+			"WeatherDataSource": {
+				"uri": "/s11hanaxs.hanatrial.ondemand.com/p1941740427trial/native/xs/weather/odata/weatherdata.xsodata/",
+				"type": "OData",
+				"settings": {
+					"annotations": [],
+					"odataVersion": "2.0",
+					"localUri": "localService/metadata.xml"
+				}
+			}
+		}
+	},
+	"sap.ui": {
+		"_version": "1.1.0",
+		"technology": "UI5",
+		"icons": {
+			"icon": "",
+			"favIcon": "",
+			"phone": "",
+			"phone@2": "",
+			"tablet": "",
+			"tablet@2": ""
+		},
+		"deviceTypes": {
+			"desktop": true,
+			"tablet": true,
+			"phone": true
+		},
+		"supportedThemes": ["sap_hcb", "sap_bluecrystal"]
+	},
+	"sap.ui5": {
+		"_version": "1.1.0",
+		"rootView": {
+			"viewName": "native.xs.weather.view.App",
+			"type": "XML"
+		},
+		"dependencies": {
+			"minUI5Version": "1.30.0",
+			"libs": {
+				"sap.ui.core": {},
+				"sap.m": {},
+				"sap.ui.layout": {}
+			}
+		},
+		"contentDensities": {
+			"compact": true,
+			"cozy": true
+		},
+		"models": {
+			"i18n": {
+				"type": "sap.ui.model.resource.ResourceModel",
+				"settings": {
+					"bundleName": "native.xs.weather.i18n.i18n"
+				}
+			},
+			"Weathermodel": {
+				"dataSource": "WeatherDataSource"
+			}
+		},
+		"resources": {
+			"css": [{
+				"uri": "css/style.css"
+			}]
+		},
+		"routing": {
+			"config": {
+				"routerClass": "sap.m.routing.Router",
+				"viewType": "XML",
+				"viewPath": "native.xs.weather.view",
+				"controlId": "idAppControl",
+				"controlAggregation": "detailPages"
+			},
+			"targets": {
+				"Master": {
+					"viewName": "GeoStation",
+					"viewId": "GeoStation",
+					"viewLevel": 1,
+					"controlAggregation": "masterPages"
+				},
+				"Detail": {
+					"viewName": "GeoStationInfo",
+					"viewId": "GeoStationInfo",
+					"viewLevel": 2,
+					"controlAggregation": "detailPages"
+				}
+			},
+			"routes": [{
+				"name": "GeoStation",
+				"pattern": "",
+				"greedy": false,
+				"target": "Master"
+			}, {
+				"name": "GeoStationInfo",
+				"pattern": "Weatherdata/{cityId}",
+				"greedy": false,
+				"target": "Detail"
+			}]
+		}
+	}
+}

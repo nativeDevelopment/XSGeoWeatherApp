@@ -1,0 +1,29 @@
+[{
+	"StationId": 4878,
+	"Name": "EDDB",
+	"Latitude": "52.38",
+	"Longitude": "13.5225",
+	"AddresseId": null,
+	"CityId": "2950159"
+}, {
+	"StationId": 4892,
+	"Name": "EDDT",
+	"Latitude": "52.56",
+	"Longitude": "13.288",
+	"AddresseId": null,
+	"CityId": "2950159"
+}, {
+	"StationId": 8989,
+	"Name": "DB0ZEH-6",
+	"Latitude": "52.9562",
+	"Longitude": "13.2652",
+	"AddresseId": null,
+	"CityId": "2950159"
+}, {
+	"StationId": 9094,
+	"Name": "DC7DOC",
+	"Latitude": "52.4038",
+	"Longitude": "13.9758",
+	"AddresseId": null,
+	"CityId": "2950159"
+}]

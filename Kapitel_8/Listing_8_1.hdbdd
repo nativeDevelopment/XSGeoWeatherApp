@@ -1,0 +1,39 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition eines Volltextindex mit der @SearchIndex-Annotation
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+// Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.cds 
+// unter dem Namen textsearch.hdbdd gespeichert werden
+
+
+namespace <<trailaccount>>..<<trialinstance>>.<<rootpackage>>.weather.model.cds;
+
+@Schema: '<<yourDBSchema>>' // in der HCP Trial Landscape '_SYS_BIC'
+context textsearch {
+
+     type Key : Integer;
+	
+	@Catalog.tableType : #COLUMN 
+    Entity station {
+        key  StationID: Key;       
+        Location: hana.ST_GEOMETRY;       
+        @SearchIndex.text.enabled:true
+        @SearchIndex.text.name:'SAMPLE'
+        @SearchIndex.fuzzy.enabled:true
+        Name: String(5000);
+        @SearchIndex.text.enabled:true
+        @SearchIndex.text.name:'COMMENT'
+        @SearchIndex.text.async:true
+        @SearchIndex.text.textAnalysis.languageDetection:['DE']
+        @SearchIndex.text.textAnalysis.mode:#EXTENDED
+        @SearchIndex.text.textAnalysis.configurationID:'EXTRACTION_CORE_VOICEOFCUSTOMER'       
+        @SearchIndex.fuzzy.enabled:true   
+        Comment: String(5000);         
+    };
+
+};

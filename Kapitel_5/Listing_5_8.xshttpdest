@@ -1,0 +1,22 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition der HTTP-Verbindung für die Google Maps Geocoding API
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.service unter dem Namen GoogleGeoCoding.xshttpdest gespeichert werden
+
+description = "Reverse Geocoding fuer Latitude/Longitude";
+host = "maps.googleapis.com";
+port=443;
+useSSL = true;
+pathPrefix = "/maps/api/geocode/json";
+authType = none;
+useProxy = true;
+proxyHost = "proxy-trial";
+proxyPort = 8080;
+timeout = 0;
+sslAuth = anonymous;

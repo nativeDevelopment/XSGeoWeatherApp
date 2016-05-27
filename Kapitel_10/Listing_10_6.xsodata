@@ -1,0 +1,19 @@
+/**
+ * Native Anwendungsentwicklung mit SAP HANA
+ *
+ * Definition einer Navigation
+ *
+ * $Autor: Stefan Kühnlein, Holger Seubert
+ * $Version: 1.0
+*/
+
+//Diese Datei muss im Verzeichnis <<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.odata gespeichert werden
+
+service {
+  "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.hdb::city" as "City"
+  navigates("City_Weatherstation" as "Weatherstation" from principal);
+  "<<trailaccount>>.<<trialinstance>>.<<rootpackage>>.weather.model.hdb::station" as "Weatherstation";
+  association "City_Weatherstation"
+  principal "City"("CityId") multiplicity "1"
+  dependent "Weatherstation"("CityId") multiplicity "*";
+}
